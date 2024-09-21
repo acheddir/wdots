@@ -14,7 +14,7 @@ My Windows dotfiles with automated installation of dependencies and configuratio
 
 ## Features
 
-- Centralized and easy configuration management for multiple tools (Windows Terminal, Neovim, Starship, WezTerm and many more!) 
+- Centralized and easy configuration management for multiple tools (Windows Terminal, Neovim, Starship, WezTerm and many more!)
 - Automated checks and installation of Dependencies.
 - Installation of WSL pre-requisites to be able to use Linux within Windows.
 
