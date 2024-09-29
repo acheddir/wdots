@@ -16,7 +16,7 @@ My Windows dotfiles with automated installation of dependencies and configuratio
 
 - Centralized and easy configuration management for multiple tools (Windows Terminal, Neovim, Starship, WezTerm and many more!)
 - Automated checks and installation of Dependencies.
-- Installation of WSL pre-requisites to be able to use Linux within Windows.
+- Automatic installation of Arch Linux in WSL.
 
 ## Documentation
 
@@ -29,5 +29,4 @@ If you care to contribute to this repo, open a pull request or an issue. Suggest
 ## Roadmap
 
 - Add support for .NET Development with Neovim (Syntax Coloring, Intellisense, Compilation and Debugging).
-- Automate the installation of Arch Linux in WSL.
 - Add dotfiles for Arch Linux.
