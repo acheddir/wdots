@@ -7,12 +7,12 @@ local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 -- Font
 config.font = wezterm.font_with_fallback({
     {
-        family = "JetBrainsMono Nerd Font",
+        family = "Victor Mono",
         weight = "Regular",
     },
     "Segoe UI Emoji",
 })
-config.font_size = 18
+config.font_size = 24
 
 -- Window
 config.initial_rows = 45
@@ -21,6 +21,7 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = opacity
 config.window_close_confirmation = "NeverPrompt"
 config.win32_system_backdrop = "Acrylic"
+config.enable_scroll_bar = true
 config.max_fps = 144
 config.animation_fps = 60
 config.cursor_blink_rate = 250
@@ -30,7 +31,7 @@ config.colors = require("cyberdream")
 config.force_reverse_video_cursor = true
 
 -- Shell
-config.default_prog = { "arch" }
+config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo" }
 
 -- Tabs
 config.enable_tab_bar = true

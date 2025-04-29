@@ -1,11 +1,11 @@
 [credential]
-    helper = manager-core
+	helper = manager
 [init]
     defaultBranch = main
 [core]
     exludesfile = ~/.gitignore
     editor = nvim
-    autocrlf = true
+	autocrlf = true
 [push]
     default = simple
 [color]
@@ -63,6 +63,11 @@
     root = ~/.ghq
 [fetch]
     prune = true
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
 [user]
 	email = acheddir@outlook.fr
 	name = Abderrahman Cheddir

@@ -9,18 +9,11 @@
                 "action": "copy",
                 "singleLine": false
             },
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
+            "id": "User.copy.644BA8F2"
         },
         {
             "command": "paste",
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "User.paste"
         },
         {
             "command": 
@@ -29,8 +22,11 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         }
     ],
     "alwaysOnTop": false,
@@ -39,10 +35,29 @@
     "centerOnLaunch": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "defaultProfile": "{01463d52-dda9-4109-b03f-c55899b52df2}",
     "initialCols": 150,
     "initialPosition": ",",
     "initialRows": 38,
+    "keybindings": 
+    [
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        }
+    ],
     "launchMode": "focus",
     "minimizeToNotificationArea": false,
     "newTabMenu": 
@@ -55,15 +70,15 @@
     {
         "defaults": 
         {
-            "colorScheme": "Cobalt2",
+            "colorScheme": "IBM 5153",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "FiraCode Nerd Font",
-                "size": 10.4,
+                "face": "JetBrainsMono Nerd Font",
+                "size": 14,
                 "weight": "normal"
             },
-            "opacity": 60,
+            "opacity": 100,
             "padding": "10",
             "scrollbarState": "hidden",
             "tabTitle": "Windows Terminal",
@@ -72,27 +87,65 @@
         "list": 
         [
             {
+                "colorScheme": "Aurelia",
+                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo",
+                "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "face": "Victor Mono"
+                },
+                "guid": "{01463d52-dda9-4109-b03f-c55899b52df2}",
+                "hidden": false,
+                "intenseTextStyle": "none",
+                "name": "Powershell",
+                "opacity": 100,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
+            },
+            {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
-                "commandline": "pwsh.exe --nologo",
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-                "hidden": false,
-                "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore"
-            },
-            {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             }
         ]
     },
     "schemes": 
     [
+        {
+            "background": "#1A1A1A",
+            "black": "#000000",
+            "blue": "#579BD5",
+            "brightBlack": "#797979",
+            "brightBlue": "#9CDCFE",
+            "brightCyan": "#2BC4E2",
+            "brightGreen": "#1AD69C",
+            "brightPurple": "#975EAB",
+            "brightRed": "#EB2A88",
+            "brightWhite": "#EAEAEA",
+            "brightYellow": "#E9AD95",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#00B6D6",
+            "foreground": "#EA549F",
+            "green": "#4EC9B0",
+            "name": "Aurelia",
+            "purple": "#714896",
+            "red": "#E92888",
+            "selectionBackground": "#FFFFFF",
+            "white": "#EAEAEA",
+            "yellow": "#CE9178"
+        },
         {
             "background": "#132738",
             "black": "#000000",
