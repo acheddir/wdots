@@ -68,6 +68,7 @@
 [mergetool "sourcetree"]
 	cmd = "'' "
 	trustExitCode = true
+	keepBackup = false
 [user]
 	email = acheddir@outlook.fr
 	name = Abderrahman Cheddir

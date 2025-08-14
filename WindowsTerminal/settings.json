@@ -16,6 +16,10 @@
             "id": "User.paste"
         },
         {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -23,10 +27,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.A6751878"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
         }
     ],
     "alwaysOnTop": false,
@@ -46,12 +46,12 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "id": "User.paste",
             "keys": "ctrl+v"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
             "id": "User.splitPane.A6751878",
@@ -118,6 +118,18 @@
                 "hidden": false,
                 "name": "Ubuntu",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{bc3fbf64-0474-5a35-8d73-4f65c5cba08b}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{4dc01abd-b857-5f5d-8970-18e125a302f4}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 21",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },

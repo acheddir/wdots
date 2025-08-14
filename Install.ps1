@@ -54,7 +54,7 @@ $psModules = @(
 )
 
 $symbolicLinks = @{
-  $PROFILE.CurrentUserAllHosts = ".\PSProfile.ps1"
+  $PROFILE = ".\PSProfile.ps1"
   "$HOME\AppData\Roaming\AltSnap\AltSnap.ini" = ".\altsnap\AltSnap.ini"
   "$HOME\.gitconfig" = ".\.gitconfig"
   "$HOME\AppData\Roaming\bat" = ".\bat"

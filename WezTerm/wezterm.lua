@@ -12,7 +12,7 @@ config.font = wezterm.font_with_fallback({
     },
     "Segoe UI Emoji",
 })
-config.font_size = 24
+config.font_size = 16
 
 -- Window
 config.initial_rows = 45

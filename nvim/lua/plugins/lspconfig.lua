@@ -108,13 +108,6 @@ return {
             cmd = { bicep_path },
         })
 
-        -- PowerShell
-        local bundle_path = mason_registry.get_package("powershell-editor-services"):get_install_path()
-        require("lspconfig").powershell_es.setup({
-            bundle_path = bundle_path,
-            settings = { powershell = { codeFormatting = { Preset = "Stroustrup" } } },
-        })
-
         -- Cargo / Rust
         require("lspconfig").taplo.setup({
             keys = {

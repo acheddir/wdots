@@ -7,6 +7,7 @@ Set-Alias -Name d -Value docker
 Set-Alias -Name df -Value Get-Volume
 Set-Alias -Name ff -Value Find-File
 Set-Alias -Name g -Value git
+Set-Alias -Name gct -Value Invoke-GitContrib
 Set-Alias -Name grep -Value Find-String
 Set-Alias -Name k -Value kubectl
 Set-Alias -Name l -Value List-PrettyList
@@ -20,6 +21,10 @@ Set-Alias -Name uus -Value Update-Dependencies
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name which -Value Show-Command
+
+function Invoke-GitContrib {
+    & "git-contrib" $args
+}
 
 # Windows Pomodoro Timer in PowerShell
 function Start-PomodoroTimer {
@@ -445,7 +450,7 @@ function Starship-ModuleCharacter {
 # Invoke-Expression (&starship init powershell)
 # Enable-TransientPrompt
 
-oh-my-posh init pwsh --config ~\.config\wdots\omp\minimal.toml | Invoke-Expression
+oh-my-posh init pwsh --config ~\.config\wdots\omp\jblab_2021.json | Invoke-Expression
 
 # Zoxide initialization:
 Invoke-Expression (& {
