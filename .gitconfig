@@ -73,6 +73,6 @@
 	email = acheddir@outlook.fr
 	name = Abderrahman Cheddir
 [safe]
-	directory = C:\\Users\\Abderrahman\\scoop\\buckets\\main
-	directory = C:\\Users\\Abderrahman\\scoop\\buckets\\extras
-	directory = C:\\Users\\Abderrahman\\scoop\\buckets\\nerd-fonts
+	directory = C:\\Users\\AbderrahmanCheddir\\scoop\\buckets\\main
+	directory = C:\\Users\\AbderrahmanCheddir\\scoop\\buckets\\extras
+	directory = C:\\Users\\AbderrahmanCheddir\\scoop\\buckets\\nerd-fonts

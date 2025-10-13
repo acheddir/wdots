@@ -7,12 +7,12 @@ local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 -- Font
 config.font = wezterm.font_with_fallback({
     {
-        family = "Victor Mono",
+        family = "JetBrains Mono",
         weight = "Regular",
     },
     "Segoe UI Emoji",
 })
-config.font_size = 16
+config.font_size = 14
 
 -- Window
 config.initial_rows = 45

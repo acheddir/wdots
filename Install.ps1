@@ -28,6 +28,7 @@ $scoopApps = @(
   "fzf" # A general-purpose fuzzy finder (used by neovim telescope)
   "gsudo" # Run command with elevated permissions from within your shell
   "git-aliases"
+  "git-contrib"
   "lazygit" # A terminal UI for git commands (can be used within neovim)
   "lsd" # An alternative to the ls command
   "make"
@@ -54,7 +55,7 @@ $psModules = @(
 )
 
 $symbolicLinks = @{
-  $PROFILE = ".\PSProfile.ps1"
+  $PROFILE = ".\Profile.ps1"
   "$HOME\AppData\Roaming\AltSnap\AltSnap.ini" = ".\altsnap\AltSnap.ini"
   "$HOME\.gitconfig" = ".\.gitconfig"
   "$HOME\AppData\Roaming\bat" = ".\bat"
@@ -148,38 +149,38 @@ foreach ($bucket in $scoopBuckets) {
 
 # Schedule AltSnap to start on Windows logon
 $trigger = New-ScheduledTaskTrigger -AtLogOn -RandomDelay "00:00:10"
-$principal = New-ScheduledTaskPrincipal -GroupId "BUILTIN\Users" -RunLevel Highest
+$principal = New-ScheduledTaskPrincipal -UserId "AzureAD\AbderrahmanCheddir" -LogonType Interactive -RunLevel Highest
 $action = New-ScheduledTaskAction -Execute "$HOME\AppData\Roaming\AltSnap\AltSnap.exe"
 $settings = New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -ExecutionTimeLimit 0
 Register-ScheduledTask -TaskName "AltSnap" -Trigger $trigger -Principal $principal -Action $action -Description "Start AltSnap on logon" -Force -Settings $settings | Out-Null
 
 # Check if Arch is already installed
-Write-Host "Checking if Arch Linux distro is already installed..."
-$distro = "Arch"
-$distroList = wsl --list --quiet
-if ($distroList -contains $distro) {
-  Write-Host "$($distro) is already installed!"
-  return
-}
+# Write-Host "Checking if Arch Linux distro is already installed..."
+# $distro = "Arch"
+# $distroList = wsl --list --quiet
+# if ($distroList -contains $distro) {
+#   Write-Host "$($distro) is already installed!"
+#   return
+# }
 
 # Enable Hyper-V for WSL use
 Write-Host "Enabling Hyper-V for WSL..."
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
-Write-Host "Setting up Arch Linux distro in WSL..."
-$ArchLinuxRootCredentials = Get-Credential -Username root -Message "Enter Arch Linux root's password"
-$ArchLinuxNewUserCredentials = Get-Credential -Message "Enter Arch Linux new user credentials"
+# Write-Host "Setting up Arch Linux distro in WSL..."
+# $ArchLinuxRootCredentials = Get-Credential -Username root -Message "Enter Arch Linux root's password"
+# $ArchLinuxNewUserCredentials = Get-Credential -Message "Enter Arch Linux new user credentials"
 
 # Install WSL Arch Linux distro
-scoop install archwsl
+# scoop install archwsl
 
 # Setup ArchWSL
-wsl --setdefault Arch # Set default WSL distro to Arch Linux
-wsl -e sudo sh -c "echo 'root:$($ArchLinuxRootCredentials.GetNetworkCredential().Password)' | chpasswd" # Change root password
-wsl -e sudo sh -c "echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel" # Create a new sudoers file with a group named 'wheel' having full root privileges when preceding a command with sudo
-wsl -e sudo sh -c "useradd -m -G wheel -s /bin/bash $($ArchLinuxNewUserCredentials.UserName)" # Create a new user and add it to the 'wheel' group
-wsl -e sudo sh -c "echo '$($ArchLinuxNewUserCredentials.UserName):$($ArchLinuxNewUserCredentials.GetNetworkCredential().Password)' | chpasswd" # Change the new user password
-Arch config --default-user $ArchLinuxNewUserCredentials.UserName # Set Arch to run by default with the new user
+# wsl --setdefault Arch # Set default WSL distro to Arch Linux
+# wsl -e sudo sh -c "echo 'root:$($ArchLinuxRootCredentials.GetNetworkCredential().Password)' | chpasswd" # Change root password
+# wsl -e sudo sh -c "echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel" # Create a new sudoers file with a group named 'wheel' having full root privileges when preceding a command with sudo
+# wsl -e sudo sh -c "useradd -m -G wheel -s /bin/bash $($ArchLinuxNewUserCredentials.UserName)" # Create a new user and add it to the 'wheel' group
+# wsl -e sudo sh -c "echo '$($ArchLinuxNewUserCredentials.UserName):$($ArchLinuxNewUserCredentials.GetNetworkCredential().Password)' | chpasswd" # Change the new user password
+# Arch config --default-user $ArchLinuxNewUserCredentials.UserName # Set Arch to run by default with the new user
 
 # Set WSL to version 2
 wsl --set-default-version 2

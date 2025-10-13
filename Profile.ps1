@@ -447,10 +447,10 @@ function Starship-ModuleCharacter {
   &starship module character
 }
 
-# Invoke-Expression (&starship init powershell)
-# Enable-TransientPrompt
+Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
 
-oh-my-posh init pwsh --config ~\.config\wdots\omp\jblab_2021.json | Invoke-Expression
+# oh-my-posh init pwsh --config ~\.config\wdots\omp\jblab_2021.json | Invoke-Expression
 
 # Zoxide initialization:
 Invoke-Expression (& {
