@@ -62,6 +62,7 @@ $symbolicLinks = @{
   "$HOME\AppData\Local\fastfetch" = ".\fastfetch"
   "$HOME\AppData\Roaming\lazygit" = ".\lazygit"
   "$HOME\AppData\Local\nvim" = ".\nvim"
+  "$HOME\.tmux.conf" = ".\psmux\.tmux.conf"
   "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" = ".\WindowsTerminal\settings.json"
   "$ENV:PROGRAMFILES\WezTerm\wezterm_modules" = ".\wezterm\"
 }
