@@ -442,7 +442,7 @@ $ENV:OBSIDIAN_VAULT = "$HOME\OneDrive\Documents\Obsidian Vaults\KB"
 $ENV:BAT_CONFIG_DIR = "$ENV:WDOTS_LOCATION\bat"
 $ENV:FZF_DEFAULT_OPTS = '--color=fg:-1,fg+:#ffffff,bg:-1,bg+:#3c4048 --color=hl:#5ea1ff,hl+:#5ef1ff,info:#ffbd5e,marker:#5eff6c --color=prompt:#ff5ef1,spinner:#bd5eff,pointer:#ff5ea0,header:#5eff6c --color=gutter:-1,border:#3c4048,scrollbar:#7b8496,label:#7b8496 --color=query:#ffffff --border="rounded" --border-label="" --preview-window="border-rounded" --height 40% --preview="bat -n --color=always {}"'
 
-oh-my-posh init pwsh --config "$ENV:WDOTS_LOCATION\omp\jblab_2021.json" | Invoke-Expression
+oh-my-posh init pwsh --config 'takuya' | Invoke-Expression
 
 # Zoxide initialization:
 Invoke-Expression (& {
@@ -452,7 +452,7 @@ Invoke-Expression (& {
     else {
       'pwd' 
     }
-  (zoxide init powershell --hook $hook) -join "`n"
+  (zoxide init powershell --cmd cd --hook $hook) -join "`n"
   })
 
 $colors = @{
@@ -479,3 +479,11 @@ Import-Module git-aliases -DisableNameChecking
 # fastfetch
 
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+
+# fnm's --use-on-cd replaces `cd` with an alias to Set-Location, which shadows zoxide's `cd`.
+# Drop that alias and call zoxide, then keep fnm's per-directory node version switching.
+Remove-Alias -Name cd -Scope Global -Force
+function global:cd {
+  __zoxide_z @args
+  Set-FnmOnLoad
+}

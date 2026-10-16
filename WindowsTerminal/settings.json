@@ -88,7 +88,7 @@
         [
             {
                 "colorScheme": "One Half Dark",
-                "commandline": "\"C:\\Users\\Abderrahman\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe\" -NoLogo",
+                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo",
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
