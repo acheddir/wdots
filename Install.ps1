@@ -149,8 +149,8 @@ foreach ($bucket in $scoopBuckets) {
 
 # Schedule AltSnap to start on Windows logon
 $trigger = New-ScheduledTaskTrigger -AtLogOn -RandomDelay "00:00:10"
-$principal = New-ScheduledTaskPrincipal -UserId "AzureAD\AbderrahmanCheddir" -LogonType Interactive -RunLevel Highest
-$action = New-ScheduledTaskAction -Execute "$HOME\AppData\Roaming\AltSnap\AltSnap.exe"
+$principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Highest
+$action = New-ScheduledTaskAction -Execute "$HOME\scoop\apps\altsnap\current\AltSnap.exe"
 $settings = New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -ExecutionTimeLimit 0
 Register-ScheduledTask -TaskName "AltSnap" -Trigger $trigger -Principal $principal -Action $action -Description "Start AltSnap on logon" -Force -Settings $settings | Out-Null
 
@@ -163,9 +163,12 @@ Register-ScheduledTask -TaskName "AltSnap" -Trigger $trigger -Principal $princip
 #   return
 # }
 
-# Enable Hyper-V for WSL use
-Write-Host "Enabling Hyper-V for WSL..."
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+# Enable the Windows features WSL2 needs (Hyper-V itself is not required).
+# Uses dism.exe directly: it shows progress and avoids the DISM PowerShell module.
+foreach ($feature in "Microsoft-Windows-Subsystem-Linux", "VirtualMachinePlatform") {
+  Write-Host "Enabling $feature for WSL..."
+  dism.exe /online /enable-feature /featurename:$feature /all /norestart
+}
 
 # Write-Host "Setting up Arch Linux distro in WSL..."
 # $ArchLinuxRootCredentials = Get-Credential -Username root -Message "Enter Arch Linux root's password"

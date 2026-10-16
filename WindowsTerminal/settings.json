@@ -87,20 +87,21 @@
         "list": 
         [
             {
-                "colorScheme": "Aurelia",
-                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo",
+                "colorScheme": "One Half Dark",
+                "commandline": "\"C:\\Users\\Abderrahman\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe\" -NoLogo",
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
-                    "face": "Victor Mono"
+                    "face": "BlexMono Nerd Font"
                 },
                 "guid": "{01463d52-dda9-4109-b03f-c55899b52df2}",
                 "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
                 "intenseTextStyle": "none",
                 "name": "Powershell",
-                "opacity": 100,
+                "opacity": 40,
                 "startingDirectory": "%USERPROFILE%",
-                "useAcrylic": false
+                "useAcrylic": true
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
@@ -112,30 +113,6 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
-            },
-            {
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
-            },
-            {
-                "guid": "{bc3fbf64-0474-5a35-8d73-4f65c5cba08b}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{4dc01abd-b857-5f5d-8970-18e125a302f4}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 21",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-                "hidden": false,
-                "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },

@@ -350,13 +350,13 @@ function Find-DotfilesLocation {
   [CmdletBinding()]
   param (
     [Parameter(Mandatory = $false, Position = 0)]
-    [string]$PSProfilePath = (Split-Path $PROFILE.CurrentUserAllHosts -Parent)
+    [string]$PSProfilePath = (Split-Path $PROFILE.CurrentUserCurrentHost -Parent)
   )
 
-  Write-Verbose "Looking for profile at: $($PROFILE.CurrentUserAllHosts)"
+  Write-Verbose "Looking for profile at: $($PROFILE.CurrentUserCurrentHost)"
 
-  if (Test-Path -Path $PROFILE.CurrentUserAllHosts) {
-    $profileItem = Get-Item -Path $PROFILE.CurrentUserAllHosts -Force
+  if (Test-Path -Path $PROFILE.CurrentUserCurrentHost) {
+    $profileItem = Get-Item -Path $PROFILE.CurrentUserCurrentHost -Force
 
     if ($profileItem.LinkType -eq "SymbolicLink") {
       Write-Verbose "Found symbolic link: $($profileItem.Target)"
@@ -364,7 +364,7 @@ function Find-DotfilesLocation {
       # For relative targets like .\PSProfile.ps1
       if ($profileItem.Target -like ".*") {
         # The symlink target is relative, so we need to find what directory it's relative to
-        $targetPath = Join-Path -Path (Split-Path $PROFILE.CurrentUserAllHosts -Parent) -ChildPath ($profileItem.Target -replace '^\.\/?','')
+        $targetPath = Join-Path -Path (Split-Path $PROFILE.CurrentUserCurrentHost -Parent) -ChildPath ($profileItem.Target -replace '^\.\/?','')
         $targetPath = (Get-Item $targetPath).Directory.FullName
         Write-Verbose "Resolved relative path to: $targetPath"
         return $targetPath
@@ -382,7 +382,7 @@ function Find-DotfilesLocation {
     }
   }
   else {
-    Write-Error "PowerShell profile not found at $($PROFILE.CurrentUserAllHosts)"
+    Write-Error "PowerShell profile not found at $($PROFILE.CurrentUserCurrentHost)"
     return $null
   }
 }
@@ -415,7 +415,7 @@ function Update-Dotfiles {
   Set-Location $cwd
 
   # Source $PROFILE
-  .$PROFILE.CurrentUserAllHosts
+  .$PROFILE.CurrentUserCurrentHost
 }
 
 function Update-Dependencies {
@@ -437,20 +437,12 @@ Invoke-Expression (&scoop-search --hook)
 # Environment Variables
 # ------------------------------------------------------------------
 $ENV:WDOTS_LOCATION = Find-DotfilesLocation -PSProfilePath $PSScriptRoot
-$ENV:STARSHIP_CONFIG = "$ENV:WDOTS_LOCATION\starship\starship.toml"
 $ENV:_ZO_DATA_DIR = $ENV:WDOTS_LOCATION
 $ENV:OBSIDIAN_VAULT = "$HOME\OneDrive\Documents\Obsidian Vaults\KB"
 $ENV:BAT_CONFIG_DIR = "$ENV:WDOTS_LOCATION\bat"
 $ENV:FZF_DEFAULT_OPTS = '--color=fg:-1,fg+:#ffffff,bg:-1,bg+:#3c4048 --color=hl:#5ea1ff,hl+:#5ef1ff,info:#ffbd5e,marker:#5eff6c --color=prompt:#ff5ef1,spinner:#bd5eff,pointer:#ff5ea0,header:#5eff6c --color=gutter:-1,border:#3c4048,scrollbar:#7b8496,label:#7b8496 --color=query:#ffffff --border="rounded" --border-label="" --preview-window="border-rounded" --height 40% --preview="bat -n --color=always {}"'
 
-function Starship-ModuleCharacter {
-  &starship module character
-}
-
-Invoke-Expression (&starship init powershell)
-Enable-TransientPrompt
-
-# oh-my-posh init pwsh --config ~\.config\wdots\omp\jblab_2021.json | Invoke-Expression
+oh-my-posh init pwsh --config "$ENV:WDOTS_LOCATION\omp\jblab_2021.json" | Invoke-Expression
 
 # Zoxide initialization:
 Invoke-Expression (& {
